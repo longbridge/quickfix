@@ -317,6 +317,7 @@ func (s *session) prepMessageForSend(msg *Message, inReplyTo *Message) (msgBytes
 		}
 	}
 
+	// Message converted to bytes here.
 	msgBytes = msg.build()
 	err = s.persist(seqNum, msgBytes)
 

@@ -28,7 +28,12 @@ _build_all:
 build_accept: 
 	cd _test; go build -o echo_server
 
-build: _build_all build_accept
+# An easy way to run the linter without going through the install process -
+# docker run -t --rm -v $(pwd):/app -w /app golangci/golangci-lint:v1.57.2 golangci-lint run -v
+# See https://golangci-lint.run/welcome/install/ for more details.
+
+# ---------------------------------------------------------------
+# Targets related to running acceptance tests -
 
 fix40:
 	cd _test; ./runat.sh $@.cfg 5001 "definitions/server/$@/*.def"

@@ -17,8 +17,9 @@ func writeLoop(connection io.Writer, messageOut chan []byte, log Log) {
 		tmNow := time.Now()
 		if _, err := connection.Write(msg); err != nil {
 			log.OnEvent(err.Error())
+		} else {
+			log.OnOutgoing(msg)
 		}
-		log.OnOutgoing(msg)
 		glog.Infof("[timetest-out] messageout - writeLoop time:%+v", time.Since(tmNow))
 	}
 }

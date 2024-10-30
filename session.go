@@ -374,7 +374,7 @@ func (s *session) EnqueueBytesAndSend(msg []byte) {
 }
 
 func (s *session) sendBytes(msg []byte) {
-	s.log.OnOutgoing(msg)
+	// s.log.OnOutgoing(msg)
 	s.messageOut <- msg
 	s.stateTimer.Reset(s.HeartBtInt)
 }
